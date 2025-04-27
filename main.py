@@ -5,13 +5,17 @@ from stats import get_book_text
 from stats import count_characters
 from stats import sort_characters
 
-# This script processes a text file containing the book "Frankenstein" and counts the number of words and characters in it.
+# This script is designed to analyze a book file and count the number of words and characters in it.
 # It also sorts the characters by their frequency of appearance in the text.
 def main():
+    
+    # Check if the correct number of command line arguments is provided.
+    # If not, print usage instructions and exit the program.
     if len(sys.argv) != 2:
         print("Usage: python3 main.py <path_to_book>")
         sys.exit(1)
     
+    # Get the file path from the command line arguments.
     path_to_file = sys.argv[1]
     book_text = get_book_text(path_to_file)    
     num_words = count_words(book_text)
@@ -21,10 +25,12 @@ def main():
     print(f"Found {num_words} total words")
     print("--------- Character Count -------")
     
-    
+    # Count and sort the number of characters in the book text.
     num_characters = count_characters(book_text)
     sorted_characters = sort_characters(num_characters)
     
+    # Print the sorted characters and their counts.
+    # The characters are sorted in descending order based on their frequency.
     for character in sorted_characters:
         print(f"{character['char']}: {character['num']}")
               
